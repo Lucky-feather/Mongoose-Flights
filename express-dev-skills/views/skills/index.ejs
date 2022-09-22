@@ -11,7 +11,7 @@
   <ul>
     <% skills.forEach(skill => { %>
       <li>
-				<%= skill.text %> 
+        <a href="/skills/<%= skill._id %>"><%= skill.text %></a>
 				- relevant? 
 				<%= skill.relevant ? 'yes' : 'no' %>
 			</li>
@@ -19,6 +19,6 @@
   </ul>
   ...
   </ul>
-  <a href="/skills/new">Add To-Do</a>
+  <a href="/skills/new">Acquire Skill</a>
 </body>
 </html>

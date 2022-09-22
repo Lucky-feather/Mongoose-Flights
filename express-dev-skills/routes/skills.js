@@ -6,6 +6,8 @@ const router = Router()
 
 router.get('/', skillsCtrl.index)
 router.get('/new', skillsCtrl.new)
+router.get('/:id', skillsCtrl.show)
+router.post('/', skillsCtrl.create)
 
 router.get('/', function(req, res) {
   res.render('skills/index', {
