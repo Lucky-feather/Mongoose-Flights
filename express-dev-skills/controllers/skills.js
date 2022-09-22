@@ -14,11 +14,11 @@ function index(req, res) {
 
   })
 }
-
-// function index(req, res) {
-//   res.render('skills/index', {
-//     skills: Skill,
+function newSkill(req, res) {
+  res.render('skills/new')
+}
 
 export {
-  index
+  index,
+  newSkill as new
 }
