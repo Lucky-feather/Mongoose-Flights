@@ -8,7 +8,7 @@ router.get('/', skillsCtrl.index)
 
 router.get('/', function(req, res) {
   res.render('skills/index', {
-    skills:skills
+    skills: skills
   })
 })
 
