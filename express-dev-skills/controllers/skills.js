@@ -8,8 +8,7 @@ function index(req, res) {
     })
   })
 
-  .catch(error => { // If there's an error, console.log it and redirect back home!
-    console.log(error)
+  .catch(error => {
     res.redirect('/')
   })
 }
@@ -21,7 +20,6 @@ function create(req, res) {
   console.log(req.body)
   Skill.create(req.body)
   .then(skill => {
-		// Notice we are doing a redirect here!
     res.redirect('/skills')
   })
   .catch(error => {
