@@ -1,24 +1,23 @@
 
-<%- include('../partials/html-head') %>
-<link rel="stylesheet" href="/stylesheets/flights/new.css" />
-<%- include('../partials/nav') %>
+<%- include('../partials/html-head')  %> 
+<link rel="stylesheet" href="/stylesheets/style.css" />
+<%- include('../partials/nav')  %>
 
 <main>
   <h1><%= title %></h1>
   <form id="new-form" action="" method="">
     <label for="airline-input">Airline:</label>
     <select name="airline" id="airline-input">
-    <option value="G">G</option>
-      <option value="PG">PG</option>
-      <option value="PG-13">PG-13</option>
-      <option value="R">R</option>
+    <option value="american">American</option>
+      <option value="southwest">Southwest</option>
+      <option value="united">United</option>
     </select>
     <label for="airport-input">Airport:</label>
     <select name="airport" id="airport-input">
-      <option value="G">G</option>
-      <option value="PG">PG</option>
-      <option value="PG-13">PG-13</option>
-      <option value="R">R</option>
+      <option value="dfw">DFW</option>
+      <option value="den">DEN</option>
+      <option value="lax">LAX</option>
+      <option value="san">SAN</option>
     </select>
     <label for="flightNo-input">Flight Number:</label>
     <input type="number" name="flightNo" id="flightNo-input">
@@ -28,4 +27,4 @@
   </form>
 </main>
 
-<%- include("../partials/footer") %>
+<%- include("../partials/footer")  %>
