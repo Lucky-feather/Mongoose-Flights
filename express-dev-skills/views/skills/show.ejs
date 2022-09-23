@@ -11,6 +11,15 @@
   <h2>Skill #<%= skill._id %></h2>
   <h3><%= skill.text %></h3>
   <p>Relevant: <%= skill.relevant ? 'Yes' : 'No' %></p>
+  <br>
+  <form 
+  action="/skills/<%= skill._id %>?_method=DELETE"
+  class="delete-form"
+  method="POST"
+>
+  <button type="submit">Delete</button>
+</form>
+<br>
 	<a href="/skills">Go back</a>
 </body>
 </html>
