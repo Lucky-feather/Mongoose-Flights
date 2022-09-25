@@ -1,7 +1,10 @@
 import { Router } from 'express'
+import * as flightsCtrl from '../controllers/flights.js'
 
 const router = Router()
-import * as flightsCtrl from '../controllers/flights.js'
+
+//GET /flights
+
 
 // GET /flights/new
 router.get('/new', flightsCtrl.new)
