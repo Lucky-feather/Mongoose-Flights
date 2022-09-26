@@ -1,11 +1,18 @@
 import { Flight } from "../models/flight.js"
 
 function newFlight (req, res){
-  console.log('new flight')
+  const newFlight = new Flight()
+  const dt = newFlight.departs
+  const departsDate = dt.toISOString().slice(0,16)
+  console.log(newFlight)
   res.render('flights/new', {
-  title: "Add Flight",
+  title: 'New Flight',
+  departsDate : departsDate
+
   })
+  console.log(departsDate)
 }
+
 
 function create(req, res) {
   Flight.create(req.body)
@@ -33,10 +40,64 @@ function index(req, res) {
   })
 }
 
+function show(req, res){
+  Flight.findById(req.params.id)
+  .then(flight => {
+    res.render('flights/show', {
+      title: 'Flight Details',
+      flight,
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+
+}
+
+function deleteFlight(req, res) {
+  Flight.findByIdAndDelete(req.params.id)
+  .then(flight=> {
+    res.redirect('/flights')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function edit(req, res) {
+  Flight.findById(req.params.id)
+  .then(flight => {
+    res.render('flights/edit',{
+      flight,
+      title: 'Edit Flight'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
+function update(req, res) {
+Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
+.then(flight=> {
+  res.redirect(`/flights/${flight._id}`)
+})
+.catch(err => {
+  console.log(err)
+  res.redirect('/')
+})
+}
 
 
 export {
   newFlight as new,
   create,
-  index
+  index,
+  show,
+  deleteFlight as delete,
+  edit,
+  update
 }
