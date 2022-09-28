@@ -14,16 +14,15 @@
 
   <% if (meals.length) { %> 
     <h3> Menu </h3>
-      <section>
-        <% meals.forEach(function(meal) { %> 
-          <ul>
-          <li><%= meal.name %></li>
-          </ul>
-        <% })  %> 
-      </section>
-    </table>
+    <section>
+      <% meals.forEach(function(meal) { %> 
+        <ul>
+        <li><%= meal.name %></li>
+        </ul>
+      <% })  %> 
+    </section>
   <% } else { %> 
-    <h3>Menu empty</h3>
+    <h3>Menu Empty</h3>
   <% } %> 
 
 </main>

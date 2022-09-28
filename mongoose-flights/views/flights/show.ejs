@@ -49,6 +49,30 @@
   <% } else { %> 
     <h3>No Tickets Yet</h3>
   <% } %> 
+  <section>
+    <h3>Add Meal to Menu</h3>
+    <ul>
+      <% flight.menu.forEach(menuItem => { %>
+        <li><%= menuItem.name %></li>
+      <% }) %>
+    </ul>
+  </section>
+  <form id="add-menu-to-flight" action="/flights/<%= flight._id %>/meals" method="post">
+    <select name="mealId">
+      <% meals.forEach(meal => { %>
+        <option value="<%= meal._id %>"><%= meal.name
+        %></option>
+      <% }) %>
+    </select>
+    <button type="submit">Add Meal</button>
+    </form>
+    <h3>Flight Menu</h3>
+
+
+
+
+
+
 
 </main>
 
