@@ -1,0 +1,31 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/main.css" />
+<%- include('../partials/nav') %>
+
+<main>
+	<h1><%= title %></h1>
+  <p>Please check the menu below to ensure the meal has not already been added.
+  </p>
+  <form id="add-meal-form" action="/meals" method="POST">
+    <label for="name">Meal:</label>
+    <input type="text" name="name" id="name">
+    <button type="submit">Add Meal</button>
+  </form>
+
+  <% if (meals.length) { %> 
+    <h3> Menu </h3>
+      <section>
+        <% meals.forEach(function(meal) { %> 
+          <ul>
+          <li><%= meal.name %></li>
+          </ul>
+        <% })  %> 
+      </section>
+    </table>
+  <% } else { %> 
+    <h3>Menu empty</h3>
+  <% } %> 
+
+</main>
+
+<%- include('../partials/footer') %>

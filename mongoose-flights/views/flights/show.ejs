@@ -21,10 +21,10 @@
     method="POST"
   >
   <h3>Add Ticket</h3>
-  <label for="seat">Seat. (A-F)(1-9)</label>
-  <input name="seat" required pattern="[A-F][1-9]\d?">
-  <label for="price">Ticket Price</label>
-  <input name="price" min="0">
+  <label for="seat" >Seat. (A-F)(1-9)</label>
+  <input name="seat"  required pattern="[A-F][1-9]\d?">
+  <label for="price" >Ticket Price</label>
+  <input name="price" value="300">
   <button type="submit">Add Ticket</button>
   </form>
 
@@ -41,7 +41,7 @@
         <% flight.tickets.forEach(function(ticket) { %> 
           <tr>
           <td><%= ticket.seat %></td>
-          <td><%= ticket.price %> </td>
+          <td>$<%= ticket.price %> </td>
           </tr>
         <% })  %> 
       </tbody>

@@ -3,8 +3,8 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const ticketSchema = new Schema({
-  seat: String,
-  price: Number
+  seat: { type: String, },
+  price: { type: Number, }
 })
 
 const flightSchema = new Schema({
@@ -18,7 +18,8 @@ const flightSchema = new Schema({
     type: Date,
     default: oneYearFromNow()
   },
-  tickets : [ticketSchema]
+  tickets : [ticketSchema],
+  meals : [{type: Schema.Types.ObjectId, ref: 'Meal' }]
 })
 
 function oneYearFromNow() {

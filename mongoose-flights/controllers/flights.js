@@ -1,5 +1,6 @@
 import { Flight } from "../models/flight.js"
 import { Ticket } from "../models/flight.js"
+import { Meal } from "../models/meal.js"
 
 function newFlight (req, res){
   const newFlight = new Flight()
@@ -16,7 +17,6 @@ function newFlight (req, res){
 
 
 function create(req, res) {
-  console.log('req.body before',req.body)
   if(req.body.departs === '') {
     delete req.body.departs
     console.log('req.body after',req.body)
@@ -48,17 +48,21 @@ function index(req, res) {
 
 function show(req, res){
   Flight.findById(req.params.id)
+  .populate('meals')
   .then(flight => {
+    Meal.find({_id: {$nin: flight.meals}})
+    .then(meals => {
     res.render('flights/show', {
       title: 'Flight Details',
       flight,
+      meals,
     })
   })
   .catch(err => {
     console.log(err)
     res.redirect('/')
   })
-
+})
 }
 
 function deleteFlight(req, res) {
@@ -98,7 +102,7 @@ Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
 }
 
 function createTicket(req, res) {
-
+console.log(req.body)
 Flight.findById(req.params.id)
 .then(flight => {
   flight.tickets.push(req.body)
