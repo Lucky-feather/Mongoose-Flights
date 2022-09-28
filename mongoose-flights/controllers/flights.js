@@ -1,24 +1,30 @@
 import { Flight } from "../models/flight.js"
+import { Ticket } from "../models/flight.js"
 
 function newFlight (req, res){
   const newFlight = new Flight()
-  const dt = newFlight.departs
-  const departsDate = dt.toISOString().slice(0,16)
-  console.log(newFlight)
+  // const dt = newFlight.departs
+  // const departsDate = dt.toISOString().slice(0,16)
+  //console.log(newFlight)
   res.render('flights/new', {
   title: 'New Flight',
-  departsDate : departsDate
+  //departsDate,
 
   })
-  console.log(departsDate)
+  //console.log(departsDate)
 }
 
 
 function create(req, res) {
+  console.log('req.body before',req.body)
+  if(req.body.departs === '') {
+    delete req.body.departs
+    console.log('req.body after',req.body)
+  }
   Flight.create(req.body)
   .then(flight => {
-    console.log(flight)
-    res.redirect(`/flights/new`)
+    console.log('this flight', flight)
+    res.redirect(`/flights`)
   })
   .catch(err => {
     console.log(err)
@@ -91,6 +97,22 @@ Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
 })
 }
 
+function createTicket(req, res) {
+
+Flight.findById(req.params.id)
+.then(flight => {
+  flight.tickets.push(req.body)
+  flight.save()
+  .then(() => {
+    res.redirect(`/flights/${flight._id}`)
+  })
+})
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/flights/${flight._id}`)
+  })
+}
+
 
 export {
   newFlight as new,
@@ -99,5 +121,6 @@ export {
   show,
   deleteFlight as delete,
   edit,
-  update
+  update,
+  createTicket
 }
