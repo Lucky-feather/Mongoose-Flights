@@ -1,27 +1,98 @@
-.details {
-display: flex;
-align-items: center;
-justify-content: left;
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-h1 {
+ul {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+
+}
+
+li {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 5px;
+}
+
+table {
+  font-size: 15px;
+
+}
+
+table thead th {
+  padding: 5px;
+  margin: 0;
+  border-bottom: 2px solid #424748;
+}
+
+table td {
+  padding: 5px;
+  text-align: center;
+}
+
+form * {
+  padding: 2px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font: bold
+}
+
+button, select {
+  padding: 4px;
+  margin: 4px;
+  border-radius: 5px;
+}
+
+
+#tickets {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+  border-radius: 5%;
+  padding: 2%;
+  margin: 2%;
+  background-color: #b8c0c2;
+
+}
+
+#add-ticket-form > button {
+  margin: 15%;
+}
+
+#tickets-purchased {
   justify-content: center;
 }
 
-#add-ticket-form {
-  padding: 5px;
-  border-radius: 5px;
-  align-items: flex-end;
+#meals {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 80%;
+  height: auto;
+  padding: 4%;
+  border-radius: 5%;
+  background-color: #b8c0c2
 }
 
-.seat .price {
-  margin: 0, 30%;
+#menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-section {
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 16px;
+#add-meal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 section div:nth-child(even) {

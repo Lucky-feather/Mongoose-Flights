@@ -1,6 +1,6 @@
 
 <%- include('../partials/html-head')  %> 
-<link rel="stylesheet" href="/stylesheets/style.css">
+<link rel="stylesheet" href="/stylesheets/show.css">
 <%- include('../partials/nav')  %>
 
 <main>
@@ -13,21 +13,28 @@
 </div>
   <div>
     <a href="/flights/<%= flight._id %>/edit">
-  <button>Edit Flight</button>
-</a></div>
+  <button id="edit-flight">Edit Flight</button>
+</a>
+</div>
+<div id="tickets">
 <form 
     id="add-ticket-form"
     action="/flights/<%= flight._id %>/tickets"
     method="POST"
   >
   <h3>Add Ticket</h3>
+  <div id="seat">
   <label for="seat" >Seat. (A-F)(1-9)</label>
   <input name="seat"  required pattern="[A-F][1-9]\d?">
+  </div>
+  <div for="price">
   <label for="price" >Ticket Price</label>
   <input name="price" value="300">
+  <br>
   <button type="submit">Add Ticket</button>
+  </div>
   </form>
-
+    <div id="tickets purchased">
   <% if (flight.tickets.length) { %> 
     <table>
       <h3> Tickets Purchased</h3>
@@ -46,17 +53,22 @@
         <% })  %> 
       </tbody>
     </table>
-  <% } else { %> 
+    <% } else { %> 
     <h3>No Tickets Yet</h3>
-  <% } %> 
-  <section>
-    <h3>Add Meal to Menu</h3>
+    <% } %> 
+  </div>
+</div>
+<div id="meals">
+  <section id="menu">
+    <h3>Flight Menu</h3>
     <ul>
       <% flight.menu.forEach(menuItem => { %>
         <li><%= menuItem.name %></li>
       <% }) %>
     </ul>
   </section>
+  <div id="add-meal">
+  <h3>Add Meal to Menu</h3>
   <form id="add-menu-to-flight" action="/flights/<%= flight._id %>/meals" method="post">
     <select name="mealId">
       <% meals.forEach(meal => { %>
@@ -65,8 +77,9 @@
       <% }) %>
     </select>
     <button type="submit">Add Meal</button>
+  </div>
+    </div>
     </form>
-    <h3>Flight Menu</h3>
 
 
 
