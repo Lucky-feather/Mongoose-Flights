@@ -1,29 +1,40 @@
-able {
-  font-size: 20px;
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 table thead th {
   padding: 5px;
-  border-bottom: 2px solid #424748;
+  font-size: 15px;
 }
 
 table td {
-  padding: 10px;
+  padding: 5px;
   text-align: center;
 }
 
-#list td:nth-child(2),
-#list td:nth-child(3) {
-  min-width: 100px;
+/* 
+form * {
+  display: flex;
+  padding: 4px;
+  border-radius: 10px;
+  flex-direction: column;
+  align-items: center;
+} */
+
+label {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 5px;
 }
 
-#list a {
-  border-radius: 4px;
+button {
+  margin: 5px;
+  border-radius: 50%;
   background-color: #b8c0c2;
-  padding: 4px;
-  text-decoration: none;
-  font-size: 16px;
-  color: #424748;
+}
+
+section div:nth-child(even) {
+  font-weight: bold;
 }
 
 #list a:visited{
