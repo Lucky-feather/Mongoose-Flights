@@ -50,11 +50,11 @@ function show(req, res){
         meals,
       })
     })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/')
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
   })
-})
 }
 
 function deleteFlight(req, res) {
@@ -83,26 +83,26 @@ function edit(req, res) {
 }
 
 function update(req, res) {
-Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
-.then(flight=> {
-  res.redirect(`/flights/${flight._id}`)
-})
-.catch(err => {
-  console.log(err)
-  res.redirect('/')
-})
+  Flight.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  .then(flight=> {
+    res.redirect(`/flights/${flight._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
 }
 
 function createTicket(req, res) {
-console.log(req.body)
-Flight.findById(req.params.id)
-.then(flight => {
-  flight.tickets.push(req.body)
-  flight.save()
-  .then(() => {
-    res.redirect(`/flights/${flight._id}`)
+  console.log(req.body)
+  Flight.findById(req.params.id)
+  .then(flight => {
+    flight.tickets.push(req.body)
+    flight.save()
+    .then(() => {
+      res.redirect(`/flights/${flight._id}`)
+    })
   })
-})
   .catch(err => {
     console.log(err)
     res.redirect(`/flights/${flight._id}`)

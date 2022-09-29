@@ -5,89 +5,76 @@
 
 <main>
   <h1><%= title %></h1>
-  <div class="details">
-  <h2><%= flight.airline %> Airlines</h2>
-  <h3>Flying to: <%= flight.airport %></h3>
-  <h3>Flight Number: <%= flight.flightNo %></h3>
-  <h3>Departs: <%= flight.departs %></h3>
-</div>
-  <div>
-    <a href="/flights/<%= flight._id %>/edit">
-  <button id="edit-flight">Edit Flight</button>
-</a>
-</div>
-<div id="tickets">
-<form 
-    id="add-ticket-form"
-    action="/flights/<%= flight._id %>/tickets"
-    method="POST"
-  >
-  <h3>Add Ticket</h3>
-  <div id="seat">
-  <label for="seat" >Seat. (A-F)(1-9)</label>
-  <input name="seat"  required pattern="[A-F][1-9]\d?">
-  </div>
-  <div for="price">
-  <label for="price" >Ticket Price</label>
-  <input name="price" value="300">
-  <br>
-  <button type="submit">Add Ticket</button>
-  </div>
-  </form>
-    <div id="tickets purchased">
-  <% if (flight.tickets.length) { %> 
-    <table>
-      <h3> Tickets Purchased</h3>
-      <thead>
-        <tr>
-          <th>Seat</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% flight.tickets.forEach(function(ticket) { %> 
-          <tr>
-          <td><%= ticket.seat %></td>
-          <td>$<%= ticket.price %> </td>
-          </tr>
-        <% })  %> 
-      </tbody>
-    </table>
-    <% } else { %> 
-    <h3>No Tickets Yet</h3>
-    <% } %> 
-  </div>
-</div>
-<div id="meals">
-  <section id="menu">
-    <h3>Flight Menu</h3>
-    <ul>
-      <% flight.menu.forEach(menuItem => { %>
-        <li><%= menuItem.name %></li>
-      <% }) %>
-    </ul>
-  </section>
-  <div id="add-meal">
-  <h3>Add Meal to Menu</h3>
-  <form id="add-menu-to-flight" action="/flights/<%= flight._id %>/meals" method="post">
-    <select name="mealId">
-      <% meals.forEach(meal => { %>
-        <option value="<%= meal._id %>"><%= meal.name
-        %></option>
-      <% }) %>
-    </select>
-    <button type="submit">Add Meal</button>
-  </div>
+    <div class="details">
+    <h2><%= flight.airline %> Airlines</h2>
+    <h3>Flying to: <%= flight.airport %></h3>
+    <h3>Flight Number: <%= flight.flightNo %></h3>
+    <h3>Departs: <%= flight.departs %></h3>
     </div>
+    <div>
+      <a href="/flights/<%= flight._id %>/edit">
+      <button id="edit-flight">Edit Flight</button>
+      </a>
+    </div>
+    <div id="tickets">
+    <form id="add-ticket-form" action="/flights/<%= flight._id %>/tickets" method="POST">
+    <h3>Add Ticket</h3>
+      <div id="seat">
+      <label for="seat" >Seat. (A-F)(1-9)</label>
+      <input name="seat"  required pattern="[A-F][1-9]\d?">
+      </div>
+      <div for="price">
+      <label for="price" >Ticket Price</label>
+      <input name="price" value="300">
+      <br>
+      <button type="submit">Add Ticket</button>
+      </div>
     </form>
-
-
-
-
-
-
-
+    <div id="tickets purchased">
+      <% if (flight.tickets.length) { %> 
+      <table>
+        <h3> Tickets Purchased</h3>
+        <thead>
+          <tr>
+            <th>Seat</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% flight.tickets.forEach(function(ticket) { %> 
+            <tr>
+              <td><%= ticket.seat %></td>
+              <td>$<%= ticket.price %> </td>
+            </tr>
+          <% })  %> 
+        </tbody>
+      </table>
+      <% } else { %> 
+        <h3>No Tickets Yet</h3>
+      <% } %> 
+    </div>
+  </div>
+  <div id="meals">
+    <section id="menu">
+      <h3>Flight Menu</h3>
+      <ul>
+        <% flight.menu.forEach(menuItem => { %>
+          <li><%= menuItem.name %></li>
+        <% }) %>
+      </ul>
+    </section>
+    <div id="add-meal">
+      <h3>Add Meal to Menu</h3>
+      <form id="add-menu-to-flight" action="/flights/<%= flight._id %>/meals" method="post">
+        <select name="mealId">
+          <% meals.forEach(meal => { %>
+            <option value="<%= meal._id %>"><%= meal.name %></option>
+          <% }) %>
+        </select>
+        <button type="submit">Add Meal</button>
+      </form>
+    </div>
+  </div>
 </main>
-
 
 <%- include("../partials/footer")  %>
